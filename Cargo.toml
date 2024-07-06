@@ -1,0 +1,25 @@
+[package]
+name = "bm42"
+version = "0.0.0-alpha-rc.5"
+edition = "2021"
+description = "Rust implementation of Qdrant's BM42"
+license = "Apache-2.0"
+repository = "https://github.com/Anush008/bm42-rs"
+homepage = "https://crates.io/crates/bm42"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = { version = "1" }
+hf-hub = {version="0.3", default-features = false, features = ["online"]}
+murmur3 = "0.5.2"
+ndarray = { version = "0.15", default-features = false }
+ort = { version = "=2.0.0-rc.3", default-features = false, features = [ "ndarray" ] }
+rust-stemmers = "1.2.0"
+serde_json = {version = "1"}
+tokenizers = { version = "0.19", default-features = false, features = ["onig"]}
+
+
+[features]
+default = ["ort-download-binaries"]
+ort-download-binaries = ["ort/download-binaries"]
