@@ -5,6 +5,11 @@
   <a href="https://github.com/Anush008/bm42-rs/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-apache-blue.svg" alt="Apache Licensed Licensed"></a>
 </div>
 
+## 🔍 Not looking for Rust?
+
+- Python 🐍: [BM42 with FastEmbed](https://github.com/qdrant/fastembed)
+- JavaScript 🌐: [BM42-js](https://github.com/Anush008/bm42-js)
+
 📥 Installation
 
 Run the following command in your project directory:
@@ -48,7 +53,7 @@ let texts = vec![
 let doc_embeddings = bm42.embed(texts).unwrap();
 
 // Generate embeddings for querying
-let query_embeddings = bm42.embed(texts).unwrap();
+let query_embeddings = bm42.query_embed(texts).unwrap();
 ```
 
 ## 📄 LICENSE
