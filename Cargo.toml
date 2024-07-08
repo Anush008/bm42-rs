@@ -1,6 +1,6 @@
 [package]
 name = "bm42"
-version = "0.0.0-alpha-rc.6"
+version = "0.0.0-alpha-rc.7"
 edition = "2021"
 description = "Rust implementation of Qdrant's BM42"
 license = "Apache-2.0"

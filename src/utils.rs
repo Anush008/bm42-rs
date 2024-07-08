@@ -149,11 +149,11 @@ pub fn lines_from_file(filename: impl AsRef<Path>) -> io::Result<Vec<String>> {
     BufReader::new(File::open(filename)?).lines().collect()
 }
 
-pub fn rescore_vector(vector: &HashMap<String, f32>, alpha: f32) -> HashMap<u32, f32> {
-    let mut new_vector: HashMap<u32, f32> = HashMap::new();
+pub fn rescore_vector(vector: &HashMap<String, f32>, alpha: f32) -> HashMap<i32, f32> {
+    let mut new_vector: HashMap<i32, f32> = HashMap::new();
 
     for (token, &value) in vector.iter() {
-        let token_id = murmur3_32(&mut Cursor::new(token), 0).unwrap();
+        let token_id = (murmur3_32(&mut Cursor::new(token), 0).unwrap() as i32).abs();
 
         let new_score = (1.0 + value).ln().powf(alpha);
 
@@ -163,11 +163,11 @@ pub fn rescore_vector(vector: &HashMap<String, f32>, alpha: f32) -> HashMap<u32,
     new_vector
 }
 
-pub fn query_rehash(tokes: Vec<String>) -> HashMap<u32, f32> {
+pub fn query_rehash(tokes: Vec<String>) -> HashMap<i32, f32> {
     tokes
         .into_iter()
         .map(|tok| {
-            let token_id = murmur3_32(&mut Cursor::new(tok), 0).unwrap();
+            let token_id = (murmur3_32(&mut Cursor::new(tok), 0).unwrap() as i32).abs();
             (token_id, 1.0)
         })
         .collect()

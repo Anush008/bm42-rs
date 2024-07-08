@@ -148,7 +148,7 @@ impl BM42 {
 
             let rescored = rescore_vector(&max_token_weight, self.alpha);
 
-            let (indices, values): (Vec<u32>, Vec<f32>) = rescored.into_iter().unzip();
+            let (indices, values): (Vec<i32>, Vec<f32>) = rescored.into_iter().unzip();
 
             results.push(SparseEmbedding { indices, values });
         }
@@ -176,7 +176,7 @@ impl BM42 {
 
             let rehashed = query_rehash(stemmed.into_iter().map(|(token, _)| token).collect());
 
-            let (indices, values): (Vec<u32>, Vec<f32>) = rehashed.into_iter().unzip();
+            let (indices, values): (Vec<i32>, Vec<f32>) = rehashed.into_iter().unzip();
 
             results.push(SparseEmbedding { indices, values });
         }
@@ -279,7 +279,7 @@ impl Default for BM42Options {
 
 #[derive(Debug, Clone)]
 pub struct SparseEmbedding {
-    pub indices: Vec<u32>,
+    pub indices: Vec<i32>,
     pub values: Vec<f32>,
 }
 
