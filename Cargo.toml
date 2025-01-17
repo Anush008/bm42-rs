@@ -11,13 +11,15 @@ homepage = "https://crates.io/crates/bm42"
 
 [dependencies]
 anyhow = { version = "1" }
-hf-hub = {version="0.3", default-features = false, features = ["online"]}
+hf-hub = { version = "0.3", default-features = false, features = ["online"] }
 murmur3 = "0.5.2"
-ndarray = { version = "0.15", default-features = false }
-ort = { version = "=2.0.0-rc.3", default-features = false, features = [ "ndarray" ] }
+ndarray = { version = "0.16", default-features = false }
+ort = { version = "2.0.0-rc.9", default-features = false, features = [
+    "ndarray",
+] }
 rust-stemmers = "1.2.0"
-serde_json = {version = "1"}
-tokenizers = { version = "0.19", default-features = false, features = ["onig"]}
+serde_json = { version = "1" }
+tokenizers = { version = "0.21", default-features = false, features = ["onig"] }
 
 
 [features]
