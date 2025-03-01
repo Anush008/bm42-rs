@@ -6,7 +6,12 @@ use anyhow::Result;
 use core::str;
 use hf_hub::{api::sync::ApiBuilder, Cache};
 use ndarray::{s, Array};
-use ort::{ExecutionProviderDispatch, GraphOptimizationLevel, Session, Value};
+use ort::{
+    execution_providers::ExecutionProviderDispatch,
+    session::{builder::GraphOptimizationLevel, Session},
+    value::Value,
+};
+
 use rust_stemmers::{Algorithm, Stemmer};
 use std::{
     collections::HashMap,
